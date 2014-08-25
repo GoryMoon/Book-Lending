@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/booklending/public',
+	'url' => 'http://booklending/',
 
 	/*
 	|--------------------------------------------------------------------------
