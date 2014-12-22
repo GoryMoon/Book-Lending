@@ -13,12 +13,12 @@ return array(
 	|
 	*/
 
-	"password" => "Passwords must be at least six characters and match the confirmation.",
+	"password" => "Lösenordet måste minst vara sex tecken och måste matcha med bekräftelse lösenordet.",
 
-	"user" => "We can't find a user with that e-mail address.",
+	"user" => "Kan inte hitta en användare med den e-post adressen.",
 
-	"token" => "This password reset token is invalid.",
+	"token" => "Återställning av lösenord sessionen har tagit slut.",
 
-	"sent" => "Password reminder sent!",
+	"sent" => "Lösenords påminnelse skickat!",
 
 );

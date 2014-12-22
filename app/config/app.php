@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://booklending/',
+	'url' => 'http://gorymoon.se/booklending/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
 
 	),
 

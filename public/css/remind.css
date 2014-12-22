@@ -1,0 +1,43 @@
+body {
+    background-color: #eee;
+}
+
+.form-remind {
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+}
+
+.form-remind .form-remind-heading{
+    text-align: center;
+}
+
+.form-remind .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-remind .form-control:focus {
+    z-index: 2;
+}
+
+.form-remind input.top,
+.form-remind input.both {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-remind input.bottom,
+.form-remind input.both {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-remind input.bottom {
+    margin-bottom: 20px;
+}

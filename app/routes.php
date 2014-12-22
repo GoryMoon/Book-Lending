@@ -11,7 +11,22 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', array('as' => 'home', function()
 {
-	return View::make('hello');
+    return View::make('index');
+}));
+
+Route::controller('password', 'RemindersController');
+
+Route::get('logout', array('as' => 'logout', 'before' => 'auth', 'uses' => 'SessionController@destroy'));
+Route::resource('sessions', 'SessionController', array('only' => array('store', 'destroy')));
+
+Route::group(array('before' => 'admin', 'prefix' => 'admin'), function()
+{
+    Route::get('/', array('as' => 'admin', function()
+    {
+        return View::make('admin');
+    }));
+
+    Route::resource('users', 'UsersController');
 });

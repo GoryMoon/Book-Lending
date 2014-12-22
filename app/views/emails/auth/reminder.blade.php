@@ -4,11 +4,14 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h2>Password Reset</h2>
+		<h2>Lösenords Återställning</h2>
 
 		<div>
-			To reset your password, complete this form: {{ URL::to('password/reset', array($token)) }}.<br/>
-			This link will expire in {{ Config::get('auth.reminder.expire', 60) }} minutes.
+			För att återställa ditt lösenord, följ denna länken: {{ HTML::link('password/reset/'. $token, "Återställ lösenord") }}.<br/>
+			Denna länk kommer att upphöra om {{ Config::get('auth.reminder.expire', 60) }} minuter. <br/><br/>
+
+			Om du inte kan klicka på länken, kopiera nedanstående länk och klistra in den i din webbläsare:<br/>
+			{{ URL::to('password/reset', array($token)) }}
 		</div>
 	</body>
 </html>

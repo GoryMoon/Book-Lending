@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('/')->with('login', 'true');;
 		}
 	}
 });
@@ -91,5 +91,5 @@ Route::filter('csrf', function()
 
 Route::filter('admin', function ()
 {
-	if (Auth::guest() || !Auth::user()->admin) return Redirect::to('/');
+	if (Auth::guest() || !(Auth::user()->userLvl < 2)) return Redirect::to('/')->with('login', 'true');;
 });
