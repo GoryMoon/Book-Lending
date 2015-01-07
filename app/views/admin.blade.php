@@ -12,8 +12,8 @@
                     <i class="fa fa-users fa-5x"></i>
                     <h3>Användare</h3>
                     <p>Här kan du hantera dina tillfälliga konton samt lägga till nya konton</p>
-                    <p><a href="" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera konton</a></p>
-                    <p><a href="" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Lägg till konto</a></p>
+                    <p><a href="{{ URL::route('admin.users.index') }}" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera konton</a></p>
+                    <p><a href="{{ URL::route('admin.users.create') }}" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Lägg till konto</a></p>
                 </div>
             </div>
         </div>
@@ -23,8 +23,8 @@
                     <i class="fa fa-book fa-5x"></i>
                     <h3>Böcker</h3>
                     <p>Här kan du hantera existerande böcker och lägga till nya böcker</p>
-                    <p><a href="{{ URL::route('admin.users.index') }}" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera böcker</a></p>
-                    <p><a href="{{ URL::route('admin.users.create') }}" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Lägg till en bok</a></p>
+                    <p><a href="{{ URL::route('admin.books.index') }}" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera böcker</a></p>
+                    <p><a href="{{ URL::route('admin.books.create') }}" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Lägg till en bok</a></p>
                 </div>
             </div>
         </div>

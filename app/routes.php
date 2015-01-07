@@ -28,5 +28,6 @@ Route::group(array('before' => 'admin', 'prefix' => 'admin'), function()
         return View::make('admin');
     }));
 
-    Route::resource('users', 'UsersController');
+    Route::resource('users', 'UsersController', array('before' => 'csrf'));
+    Route::resource('books', 'BooksController', array('before' => 'csrf'));
 });

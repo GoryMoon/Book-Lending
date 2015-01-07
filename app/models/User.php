@@ -11,6 +11,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $fillable = ['username', 'email', 'password', 'userLvl'];
 
+    public static $rules = [
+        'username' => 'required', 
+        'email' => 'required'
+    ];
+
+    public $errors;
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -38,5 +45,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function getRememberTokenName()
     {
     	return 'remember_token';
+    }
+
+    public function isValid($data)
+    {
+        $validation = Validator::make($data, static::$rules);
+
+        if ($validation->passes()) return true;
+
+        $this->errors = $validation->messages();
+        return false;
     }
 }

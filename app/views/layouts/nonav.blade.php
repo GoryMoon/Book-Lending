@@ -11,6 +11,7 @@
     
     <!-- Bootstrap -->
     {{ HTML::style( asset('css/bootstrap/bootstrap.min.css')) }}
+    {{ HTML::style( asset('css/select2-bootstrap.css')) }}
 
     <!-- Main Css -->
     {{ HTML::style( asset('css/style.css')) }}
@@ -38,4 +39,6 @@
     {{ HTML::script( asset('js/bootstrap.min.js')) }}
     {{ HTML::script( asset('js/jquery-ui.min.js')) }}
     {{ HTML::script( asset('js/main.js')) }}
+
+    @yield('javascript')
 </body>

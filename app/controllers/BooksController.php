@@ -1,28 +1,21 @@
 <?php
 
-class UsersController extends BaseController {
-
-	protected $user;
-
-	public function __construct(User $user)
-	{
-		$this->user = $user;
-	}
+class BooksController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /users
+	 * GET /books
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return View::make('users.index')->with('users', $this->user->where('userLvl', '>', '0')->get());
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /users/create
+	 * GET /books/create
 	 *
 	 * @return Response
 	 */
@@ -33,7 +26,7 @@ class UsersController extends BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /users
+	 * POST /books
 	 *
 	 * @return Response
 	 */
@@ -44,7 +37,7 @@ class UsersController extends BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /users/{id}
+	 * GET /books/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -56,46 +49,38 @@ class UsersController extends BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /users/{id}/edit
+	 * GET /books/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		return View::make('users.edit')->with('user', User::where('id', '=', $id)->firstOrFail());
+		//
 	}
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /users/{id}
+	 * PUT /books/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		if (!$this->user->isValid($input = Input::only('username', 'email', 'userLvl'))) {
-			return Redirect::back()->withInput()->withErrors($this->user->errors);
-		}
-
-		$this->user->find($id)->update($input);
-
-		return Redirect::route('admin.users.index');
+		//
 	}
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /users/{id}
+	 * DELETE /books/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		$user = $this->user->find($id);
-		$user->delete();
-		return Redirect::route('admin.users.index');
+		//
 	}
 
 }

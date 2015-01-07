@@ -84,8 +84,11 @@ return array(
 	*/
 
 	'custom' => array(
-		'attribute-name' => array(
-			'rule-name' => 'custom-message',
+		'username' => array(
+			'required' => 'Änvändarnamn fältet är obligatoriskt.',
+		),
+		'email' => array(
+			'required' => 'E-Post fältet är obligatoriskt.',
 		),
 	),
 

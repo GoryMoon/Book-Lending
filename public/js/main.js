@@ -2,6 +2,7 @@ $(document).ready(function($) {
     if (typeof showLoginDefault !== 'undefined' && showLoginDefault) {
         $('#loginModal').modal('show');
     }
+    
     $('.form-signin').on('submit', function(e) {
         var btn = $('#login-btn');
         btn.button('loading');
@@ -26,9 +27,13 @@ $(document).ready(function($) {
         return false;
     });
 
-   $('#dropAdmin').click(function(e) {
+    $('#loginModal').on('shown.bs.modal', function () {
+        $('#loginEmail').focus()
+    })
+
+    $('#dropAdmin').click(function(e) {
        e.preventDefault();
-   });
+    });
 
     function search(input) {
         if (input != "") {

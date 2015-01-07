@@ -42,16 +42,18 @@
                                 <li class="divider"></li>
                                 <li class="dropdown-header"><i class="fa fa-book"></i> Böcker</li>
                                 @if(Auth::user()->userLvl < 2)
-                                    <li class="{{ Request::is('*books') ? 'active': '' }}">         <a href=""><i class="fa fa-database"></i> Hantera böcker</a></li>
+                                    <li class="{{ Request::is('*books') ? 'active': '' }}">         <a href="{{ URL::route('admin.books.index') }}"><i class="fa fa-database"></i> Hantera böcker</a></li>
                                 @endif
 
-                                <li class="{{ Request::is('*books/create') ? 'active': '' }}">      <a href=""><i class="fa fa-plus"></i> Lägg till en bok</a></li>
+                                <li class="{{ Request::is('*books/create') ? 'active': '' }}">      <a href="{{ URL::route('admin.books.create') }}"><i class="fa fa-plus"></i> Lägg till en bok</a></li>
 
-                                @if(Auth::user()->userLvl < 2)
+                                @if(Auth::user()->userLvl < 1)
                                     <li class="divider"></li>
                                     <li class="dropdown-header"><i class="fa fa-users"></i> Användare</li>
                                     <li class="{{ Request::is('*users') ? 'active': '' }}">         <a href="{{ URL::route('admin.users.index') }}"><i class="fa fa-database"></i> Hantera konton</a></li>
                                     <li class="{{ Request::is('*users/create') ? 'active': '' }}">  <a href="{{ URL::route('admin.users.create') }}"><i class="fa fa-plus"></i> Lägg till konto</a></li>
+                                @endif
+                                @if(Auth::user()->userLvl < 2)
                                     <li class="divider"></li>
                                     <li class="dropdown-header"><i class="fa fa-th-list"></i> Genrer</li>
                                     <li class="{{ Request::is('*genre') ? 'active': '' }}">         <a href=""><i class="fa fa-database"></i> Hantera genrer</a></li>
@@ -91,7 +93,7 @@
                 <div id="signin-form-model" class="modal-body">
                     <div id="login-error" role="alert"></div>
                     {{ Form::open(array('class' => 'form-signin', 'role' => 'form', 'route' => 'sessions.store')) }}
-                        {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'E-post', 'required')) }}
+                        {{ Form::email('email', null, array('class' => 'form-control', 'id' => 'loginEmail', 'placeholder' => 'E-post', 'required')) }}
                         {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Lösenord', 'required')) }}
                         <div class="checkbox-area">
                             {{ Form::checkbox('remember', 1, null, array('id' => 'remember')) }}
