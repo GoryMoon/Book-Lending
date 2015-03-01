@@ -7,7 +7,7 @@
 
     <div class="row">
         @foreach($books as $book)
-            <div class="col-sm-3 col-md-3">
+            <div class="col-sm-4 col-md-3">
                 <a href="{{ URL::route('books.show', array($book->id)) }}" class="thumbnail">
                     {!! $book->image !!}
                     <div class="caption">
