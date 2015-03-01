@@ -92,6 +92,10 @@ class BooksController extends Controller {
         $desc = str_replace(array("\r\n", "\n\r", "\r", "\n"), "", nl2br("$desc"));
         $amount = intval($inputs['amount']);
         $imageUrl = $this->uploadImage($request, $isbn, $inputs['imageUrl']);
+        if ($imageUrl == "" || !str_contains($imageUrl, 'no_book_cover.jpg')) {
+            $imageUrl = '/images/no_book_cover.jpg';
+        }
+
         $authors =  explode("; ", $authors);
 
         $newBook = null;
@@ -171,6 +175,7 @@ class BooksController extends Controller {
                 $storedKey = $master[$i];
             else
                 $storedKey = $item;
+            
             if ($master[$i]->id != $item->id) {
                $storedFilters = array_add($storedFilters, $storedKey->id, 'false');
             } else {
@@ -298,7 +303,7 @@ class BooksController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$user = $this->book->find($id);
+		$book = $this->book->find($id);
 		$book->delete();
 		return Redirect::route('admin.books.index');
 	}

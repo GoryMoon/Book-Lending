@@ -57,7 +57,7 @@
                     <h4 class="modal-title" id="deleteModalLabel">Ta bort boken?</h4>
                 </div>
                 <div class="modal-body">
-                    {!! Form::open(array('route' => array('admin.users.destroy', '@id@'), 'method' => 'delete')) !!}
+                    {!! Form::open(array('route' => array('admin.books.destroy', '@id@'), 'method' => 'delete')) !!}
                         <div class="alert alert-warning">
                             <strong>Är du säker att du vill ta bort boken?</strong>
                         </div>
