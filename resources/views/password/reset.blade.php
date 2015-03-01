@@ -9,7 +9,7 @@
 @section('main-content')
 
     {!! Form::open(array('action' => 'RemindersController@postReset', 'class' => 'form-remind')) !!}
-        <h2 class="form-remind-heading">Återställ lösenordet</h2>
+        <h2 class="form-remind-heading">{{ $title }}</h2>
         {!! Form::hidden('token', $token) !!}
         {!! Form::email('email', null, array('class' => 'form-control top', 'placeholder' => 'E-post')) !!}
         {!! Form::password('password', array('class' => 'form-control both', 'placeholder' => 'Lösenord')) !!}

@@ -50,14 +50,14 @@ Route::get('logout', array('as' => 'logout', 'middleware' => 'auth', 'uses' => '
 Route::resource('sessions', 'SessionController', array('only' => array('store', 'destroy')));
 Route::resource('books', 'BooksController', array('only' => array('show')));
 
-Route::group(array('before' => array('admin'), 'prefix' => 'admin'), function()
+Route::group(array('before' => array('semi-admin'), 'prefix' => 'admin'), function()
 {
     Route::get('/', array('as' => 'admin', function()
     {
         return View::make('admin');
     }));
 
-    Route::resource('users', 'UsersController');
+    Route::resource('users', 'UsersController', array('before' => 'admin'));
     Route::resource('books', 'BooksController');
 });
 

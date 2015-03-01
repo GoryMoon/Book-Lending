@@ -35,5 +35,9 @@
             font-size: 72px;
             margin-top: 100px;
         }
+        
+        #loginModal {
+            text-align: left;
+        }
     </style>
 @stop

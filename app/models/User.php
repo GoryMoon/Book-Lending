@@ -16,6 +16,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'email' => 'required|email|unique:users'
     ];
 
+    public static $rulesEdit = [
+        'username' => 'required', 
+        'email' => 'required|email'
+    ];
+
     public $errors;
 
 	/**
@@ -44,14 +49,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var data
      */
-    public function isValid($data)
+    public function isValid($data, $edit = false)
     {
-        $validation = Validator::make($data, static::$rules);
+        $validation = $edit ? Validator::make($data, static::$rulesEdit): Validator::make($data, static::$rules);
 
         if ($validation->passes()) return true;
 
         $this->errors = $validation->messages();
         return false;
     }
-
 }

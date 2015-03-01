@@ -3,13 +3,12 @@
 @section('main-content')
     <div class="page-header">
         <h1>Administrera
-            <small>Lägg till användare <div class="alert alert-danger" role="alert" style="display:inline-block;padding:5px;"><i class="fa fa-exclamation-triangle"></i> Funkar ej</div></small> 
+            <small>Lägg till användare</small> 
         </h1>
     </div>
     @if($errors->count() > 0)    
         <div class="alert alert-danger">
             {!! $errors->first('username') !!}
-            <br>
             {!! $errors->first('email') !!}
         </div>
     @endif
@@ -36,6 +35,12 @@
             {!! Form::label('passwordType', 'Typ av Lösenord', array('class' => 'col-sm-2 control-label')) !!}
             <div class="col-sm-8">
                 {!! Form::select('passwordType', array('0' => 'Skriv in', '1' => 'Generera Lösenord', '2' => 'Be användaren mata in lösenord'), Input::get('pw') ,array('class' => 'form-control', 'id' => 'pwtype')) !!}
+            </div>
+        </div>
+        <div class="form-group" id="passwordField">
+            {!! Form::label('password', 'Lösenord', array('class' => 'control-label col-sm-2')) !!}
+            <div class="col-sm-8">
+                {!! Form::password('password', array('class' => 'form-control', 'placeholder' => 'Lösenord')) !!}
             </div>
         </div>
         <div class="form-group">

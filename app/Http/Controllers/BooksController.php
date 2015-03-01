@@ -20,6 +20,7 @@ class BooksController extends Controller {
 	{
 		$this->book = $book;
 		$this->category = $category;
+        $this->beforeFilter('admin', array('except' => array('create')));
 	}
 
 	/**

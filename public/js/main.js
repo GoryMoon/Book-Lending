@@ -37,7 +37,7 @@ $(document).ready(function($) {
 
     function search(input) {
         if (input != "") {
-            var googleAPI = "http://libris.kb.se/xsearch?query=" + input + " MAT%3a(böcker)&format_level=full&n=20&format=json";
+            var googleAPI = "http://api.libris.kb.se/xsearch?query=" + input + " MAT%3a(böcker)&format_level=full&n=20&format=json";
             $.ajax({
                 type: 'GET',
                 url: googleAPI,
@@ -138,6 +138,14 @@ $(document).ready(function($) {
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [numFiles, label]);
     });
+
+    $("#pwtype").change(function() {
+        if ($(this).val() == 0) {
+            $("#passwordField").slideDown();
+        } else {
+            $("#passwordField").slideUp();
+        }
+    })
 
     function errorLogin() {
         $('#login-error').addClass('alert alert-danger').html('Ogiltlig e-post/lösenord!');

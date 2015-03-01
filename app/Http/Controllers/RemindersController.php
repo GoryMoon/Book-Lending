@@ -1,5 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Password;
+
+use Illuminate\Http\Request;
+
 class RemindersController extends Controller {
 
 	/**
@@ -17,9 +26,9 @@ class RemindersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postRemind()
+	public function postRemind(Request $request)
 	{
-		switch ($response = Password::remind(Input::only('email'), function($message)
+		switch ($response = Password::sendResetLink(array('email' => $request->only('email')), function($message)
 		{
 			$message->subject("Glömt Lösenord");
 		}))
@@ -32,6 +41,13 @@ class RemindersController extends Controller {
 		}
 	}
 
+	public function getSet($token = null)
+	{
+		if (is_null($token)) App::abort(404);
+
+		return View::make('password.reset')->with(array('token' => $token, 'title' => 'Sätt lösenordet'));
+	}
+
 	/**
 	 * Display the password reset view for the given token.
 	 *
@@ -42,7 +58,7 @@ class RemindersController extends Controller {
 	{
 		if (is_null($token)) App::abort(404);
 
-		return View::make('password.reset')->with('token', $token);
+		return View::make('password.reset')->with(array('token' => $token, 'title' => 'Återställ lösenordet'));
 	}
 
 	/**
@@ -50,9 +66,9 @@ class RemindersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postReset()
+	public function postReset(Request $request)
 	{
-		$credentials = Input::only(
+		$credentials = $request->only(
 			'email', 'password', 'password_confirmation', 'token'
 		);
 

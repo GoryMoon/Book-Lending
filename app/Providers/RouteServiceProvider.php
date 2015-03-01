@@ -37,6 +37,11 @@ class RouteServiceProvider extends ServiceProvider {
 		{
 			if (Auth::guest() || !(Auth::user()->userLvl < 2)) return Redirect::to('/')->with('login', 'true');
 		});
+
+		Route::filter('semi-admin', function ()
+		{
+			if (Auth::guest() || !(Auth::user()->userLvl < 3)) return Redirect::to('/')->with('login', 'true');
+		});
 	}
 
 	/**

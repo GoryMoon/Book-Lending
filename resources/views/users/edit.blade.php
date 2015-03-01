@@ -12,9 +12,8 @@
         {!! Form::model($user, array('route' => array('admin.users.update', $user->id), 'method' => 'put', 'class' => 'form-horizontal')) !!}
             @if($errors->count() > 0)    
                 <div class="alert alert-danger">
-                    {!! $errors->first('username') !!}
-                    <br>
-                    {!! $errors->first('email') !!}
+                    <p>{!! $errors->first('username') !!}</p>
+                    <p>{!! $errors->first('email') !!}</p>
                 </div>
             @endif
             <div class="form-group">

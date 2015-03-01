@@ -209,10 +209,6 @@ input[readonly] {
   cursor: text !important;
 }
 
-.thumbnail {
-    min-height: 440px;
-}
-
 
 /* Bootstrap hack for responsive tables */
 @-moz-document url-prefix() {

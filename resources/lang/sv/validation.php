@@ -89,6 +89,7 @@ return array(
 		),
 		'email' => array(
 			'required' => 'E-Post fältet är obligatoriskt.',
+			'unique'   => 'E-Posten är redan uptagen',
 		),
 	),
 

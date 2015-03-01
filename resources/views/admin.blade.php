@@ -6,6 +6,7 @@
     </div>
 
     <div class="row">
+        @if(Auth::user()->userLvl < 1)
         <div class="col-sm-3 col-md-3">
             <div class="thumbnail">
                 <div class="caption">
@@ -17,17 +18,23 @@
                 </div>
             </div>
         </div>
+        @endif
         <div class="col-sm-3 col-md-3">
             <div class="thumbnail">
                 <div class="caption">
                     <i class="fa fa-book fa-5x"></i>
                     <h3>Böcker</h3>
-                    <p>Här kan du hantera existerande böcker och lägga till nya böcker</p>
-                    <p><a href="{{ URL::route('admin.books.index') }}" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera böcker</a></p>
+                    @if(Auth::user()->userLvl < 2)
+                        <p>Här kan du hantera existerande böcker och lägga till nya böcker</p>
+                        <p><a href="{{ URL::route('admin.books.index') }}" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera böcker</a></p>
+                    @else
+                        <p>Här kan du lägga till nya böcker</p>
+                    @endif
                     <p><a href="{{ URL::route('admin.books.create') }}" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Lägg till en bok</a></p>
                 </div>
             </div>
         </div>
+        @if(Auth::user()->userLvl < 2)
         <div class="col-sm-3 col-md-3">
             <div class="thumbnail">
                 <div class="caption">
@@ -40,5 +47,6 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 @stop

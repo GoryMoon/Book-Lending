@@ -7,7 +7,7 @@
         </h1>
         
     </div>
-    <a href="{!! URL::route('admin.users.create') !!}" class="btn btn-success">Lägg till användare</a> <div class="alert alert-danger" role="alert" style="display:inline-block;padding:5px;"><i class="fa fa-exclamation-triangle"></i> Funkar ej</div>
+    <a href="{!! URL::route('admin.users.create') !!}" class="btn btn-success">Lägg till användare</a>
     <br>
     <br>
     <div class="table-responsive">

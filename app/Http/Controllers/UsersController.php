@@ -3,15 +3,22 @@
 use App\Models\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Passwords\TokenRepositoryInterface;
+use Illuminate\Support\Facades\Password;
 
 class UsersController extends Controller {
 
 	protected $user;
 
-	public function __construct(User $user)
+	protected $tokens;
+
+	public function __construct(User $user, TokenRepositoryInterface $tokens)
 	{
 		$this->user = $user;
+		$this->tokens = $tokens;
 	}
 
 	/**
@@ -44,7 +51,39 @@ class UsersController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		return Redirect::route('admin.users.index'); //TODO store users
+		if (!$this->user->isValid($input = $request->only('username', 'email', 'userLvl', 'passwordType'))) {
+			return Redirect::back()->withInput()->withErrors($this->user->errors);
+		}
+
+		$user = new User;
+		$user->username = $input['username'];
+		$user->email = $input['email'];
+		$user->userLvl = $input['userLvl'];
+
+		$genPass = uniqid();
+		if ($input['passwordType'] == '0') {
+			$user->password = Hash::make($input['password']);
+		} elseif ($input['passwordType'] == '1') {
+			$user->password = Hash::make($genPass);
+		} else {
+			$user->password = $genPass;
+		}
+
+		$user->save();
+
+		$token = null;
+		if ($input['passwordType'] == '2') {
+			$tokenUser = Password::getUser(array('email' => $user->email));
+			$token = $this->tokens->create($tokenUser);
+		}
+
+		Mail::send('emails.welcome', array('user' => $user, 'password' => $genPass, 'passType' => $input['passwordType'], 'token' => $token), function ($message) use ($user)
+		{
+			$message->to($user->email);
+			$message->subject('Välkommen');
+		});
+
+		return Redirect::route('admin.users.index');
 	}
 
 	/**
@@ -80,7 +119,7 @@ class UsersController extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
-		if (!$this->user->isValid($input = $request->only('username', 'email', 'userLvl'))) {
+		if (!$this->user->isValid($input = $request->only('username', 'email', 'userLvl'), true)) {
 			return Redirect::back()->withInput()->withErrors($this->user->errors);
 		}
 

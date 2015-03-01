@@ -19,3 +19,11 @@
         @endforeach
     </div>
 @stop
+
+@section('css')
+    <style>
+        .thumbnail {
+            min-height: 440px;
+        }
+    </style>
+@stop

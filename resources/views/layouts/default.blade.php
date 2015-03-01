@@ -40,19 +40,20 @@
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropAdmin">
                                 <li class="{{ Request::is('admin') ? 'active': '' }}">{!! Html::linkRoute('admin', 'Administrera') !!}</li>
                                 <li class="divider"></li>
+                                
+                                @if(Auth::user()->userLvl < 1)
+                                    <li class="dropdown-header"><i class="fa fa-users"></i> Användare</li>
+                                    <li class="{{ Request::is('*users') ? 'active': '' }}"><a href="{{ URL::route('admin.users.index') }}"><i class="fa fa-database"></i> Hantera konton</a></li>
+                                    <li class="{{ Request::is('*users/create') ? 'active': '' }}"><a href="{{ URL::route('admin.users.create') }}"><i class="fa fa-plus"></i> Lägg till konto</a></li>
+                                @endif
+
+                                <li class="divider"></li>
                                 <li class="dropdown-header"><i class="fa fa-book"></i> Böcker</li>
                                 @if(Auth::user()->userLvl < 2)
                                     <li class="{{ Request::is('*books') ? 'active': '' }}"><a href="{{ URL::route('admin.books.index') }}"><i class="fa fa-database"></i> Hantera böcker</a></li>
                                 @endif
 
                                 <li class="{{ Request::is('*books/create') ? 'active': '' }}"><a href="{{ URL::route('admin.books.create') }}"><i class="fa fa-plus"></i> Lägg till en bok</a></li>
-
-                                @if(Auth::user()->userLvl < 1)
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header"><i class="fa fa-users"></i> Användare</li>
-                                    <li class="{{ Request::is('*users') ? 'active': '' }}"><a href="{{ URL::route('admin.users.index') }}"><i class="fa fa-database"></i> Hantera konton</a></li>
-                                    <li class="{{ Request::is('*users/create') ? 'active': '' }}"><a href="{{ URL::route('admin.users.create') }}"><i class="fa fa-plus"></i> Lägg till konto</a></li>
-                                @endif
                                 @if(Auth::user()->userLvl < 2)
                                     <li class="divider"></li>
                                     <li class="dropdown-header"><span class="text-danger"><i class="fa fa-exclamation-triangle"></i> Ej implementerat<span></li>

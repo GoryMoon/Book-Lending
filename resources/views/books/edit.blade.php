@@ -40,7 +40,7 @@
                     <div class="col-sm-4"></div>
                     {!! Form::label('author', 'Författare', array('class' => 'col-sm-1 control-label')) !!}
                     <div class="col-sm-3">
-                        {!! Form::text('author', null, array('class' => 'form-control', 'placeholder' => 'Doe, John')) !!}
+                        {!! Form::text('author', null, array('class' => 'form-control', 'placeholder' => 'Efternamn, Förnamn')) !!}
                     </div>
                 </div>
                 <div class="form-group">
