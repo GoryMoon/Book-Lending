@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4"></div>
-                    {!! Form::label('author', 'Författare', array('class' => 'col-sm-1 control-label')) !!}
+                    <label for="author" class="col-sm-1 control-label">Författare<a href="" class="info" data-toggle="popover" data-content="Skriv i formatet 'Efternamn, Förnamn' och separera författare med ett semikolon t.ex 'Efternamn, Förnamn; Efternamn, Förnamn'" data-container="body" data-trigger="hover">?</a></label>
                     <div class="col-sm-3">
                         {!! Form::text('author', null, array('class' => 'form-control', 'placeholder' => 'Efternamn, Förnamn')) !!}
                     </div>
