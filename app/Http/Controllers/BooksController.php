@@ -36,6 +36,7 @@ class BooksController extends Controller {
 		foreach ($books as $value) {
 			$value->description = str_ireplace($breaks, "<br>", $value->description);
 			$value->genres = implode('<br>', $this->reformatCategories($value->categories->toArray(), true));
+            $value->author = implode("<br>", $this->reformatCategories($value->authors->toArray(), true));
 
 			$url = $value->imageUrl;
 			if (!str_contains($url, 'no_book_cover.jpg') && !str_contains($url, 'http')) {

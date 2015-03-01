@@ -17,6 +17,7 @@
                 <tr>
                     <th>Titel</th>
                     <th>ISBN</th>
+                    <th>Författare</th>
                     <th>Genre</th>
                     <th>Beskriving</th>
                     <th>Mängd</th>
@@ -29,6 +30,7 @@
                 <tr>
                     <td width="150px">{{ $book->title }}</td>
                     <td>{{ $book->isbn }}</td>
+                    <td>{{ $book->author }}</td>
                     <td>{!! $book->genres !!}</td>
                     <td>{!! $book->description !!}</td>
                     <td>{{ $book->amount }}</td>

@@ -18,7 +18,7 @@
             {!! Form::open(array('class' => 'form-horizontal', 'role' => 'form', 'route' => 'admin.books.store', 'method' => 'post', 'enctype' => 'multipart/form-data')) !!}
                 <div class="form-group">
                     <div class="col-sm-4"></div>
-                    <label for="isbn" class="col-sm-1 control-label">ISBN <a href="" class="info" data-toggle="popover" data-content="ISBN är nummret som står ovanför strekkoden på baksidan utav boken eller inuti boken där info om tryck och publicerare" data-container="body" data-trigger="hover">?</a></label>
+                    <label for="isbn" class="col-sm-1 control-label">ISBN <a href="" class="info" data-toggle="popover" data-content="ISBN är nummret som står ovanför streckkoden på baksidan utav boken eller inuti boken där info om tryck och publicerare finns" data-container="body" data-trigger="hover">?</a></label>
                     <div class="col-sm-3">
                         {!! Form::text('isbn', null, array('class' => 'form-control', 'placeholder' => 'ISBN nummret', 'required' => 'true', 'id' => 'isbn')) !!}
                     </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4"></div>
-                    {!! Form::label('description', "Beskrivning (Valfritt)", array('class' => 'col-sm-1 control-label')) !!}
+                    <label for="description" class="col-sm-1 control-label">Beskrivning (Valfritt) <a href="" class="info" data-toggle="popover" data-content="En kort beskrivning om vad boken handlar om, inte hur boken slutar" data-container="body" data-trigger="hover">?</a></label>
                     <div class="col-sm-3">
                         {!! Form::textarea('description', null, array('class' => 'form-control', 'cols' => 15, 'rows' => 5)) !!}
                     </div>
