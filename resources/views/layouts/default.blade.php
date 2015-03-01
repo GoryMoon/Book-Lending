@@ -57,6 +57,13 @@
                                 @if(Auth::user()->userLvl < 2)
                                     <li class="divider"></li>
                                     <li class="dropdown-header"><span class="text-danger"><i class="fa fa-exclamation-triangle"></i> Ej implementerat<span></li>
+                                    <li class="dropdown-header"><i class="fa fa-user"></i> Författare</li>
+                                    <li class="{{ Request::is('*author') ? 'active': '' }}"><a href=""><i class="fa fa-database"></i> Hantera författare</a></li>
+                                    <li class="{{ Request::is('*author/create') ? 'active': '' }}"><a href=""><i class="fa fa-plus"></i> Lägg till författare</a></li>
+                                    
+
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header"><span class="text-danger"><i class="fa fa-exclamation-triangle"></i> Ej implementerat<span></li>
                                     <li class="dropdown-header"><i class="fa fa-th-list"></i> Genrer</li>
                                     <li class="{{ Request::is('*genre') ? 'active': '' }}"><a href=""><i class="fa fa-database"></i> Hantera genrer</a></li>
                                     <li class="{{ Request::is('*genre/create') ? 'active': '' }}"><a href=""><i class="fa fa-plus"></i> Lägg till genrer</a></li>

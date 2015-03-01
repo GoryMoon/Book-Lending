@@ -38,6 +38,18 @@
         <div class="col-sm-3 col-md-3">
             <div class="thumbnail">
                 <div class="caption">
+                    <i class="fa fa-user fa-5x"></i>
+                    <h3>Författare</h3>
+                    <div class="alert alert-danger" role="alert" style="display:inline-block;padding:5px;"><i class="fa fa-exclamation-triangle"></i> Ej implementerat</div>
+                    <p>Här kan du hantera existerande författare och lägga till nya författare</p>
+                    <p><a href="" class="btn btn-default btn-block"><i class="fa fa-database"></i> Hantera författare</a></p>
+                    <p><a href="" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Lägg till en författare</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <div class="thumbnail">
+                <div class="caption">
                     <i class="fa fa-th-list fa-5x"></i>
                     <h3>Genrer</h3>
                     <div class="alert alert-danger" role="alert" style="display:inline-block;padding:5px;"><i class="fa fa-exclamation-triangle"></i> Ej implementerat</div>
